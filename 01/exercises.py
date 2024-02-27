@@ -34,17 +34,19 @@ def text_is_palindrome():
 
 
 # Exercício 03
-def count_increasing_subsets(nums):
-    if not nums:
-        return 0
 
-    subconjuntos = 1 
 
-    for i in range(1, len(nums)):
-        if nums[i] > nums[i - 1]:
-            subconjuntos += 1
+def count_increasing_subsets(arr):
+    n = len(arr)
+    count = [0] * 10 
 
-    return subconjuntos
+    for i in range(n):
+        for j in range(arr[i]):  
+            count[arr[i]] += count[j]  
+        count[arr[i]] += 1  
+
+    result = sum(count)
+    return result
 
 # Testes 03
 def test_count_increasing_subsets():
@@ -67,4 +69,3 @@ if __name__ == "__main__":
     test_max_consecutive_sum()
     text_is_palindrome()
     test_count_increasing_subsets()
-
